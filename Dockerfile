@@ -3,7 +3,6 @@ WORKDIR /usr/src/app/calculadora
 
 COPY . .
 
-COPY package*.json ./
 RUN npm ci --only=production
 
 CMD [ "node", "./src/apps/MainApp.js" ]
