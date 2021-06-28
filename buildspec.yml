@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 577269947961.dkr.ecr.us-east-1.amazonaws.com
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - docker build -t calculadora-node .
+      - docker tag calculadora-node:latest 577269947961.dkr.ecr.us-east-1.amazonaws.com/calculadora-node:latest
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+      - docker push 577269947961.dkr.ecr.us-east-1.amazonaws.com/calculadora-node:latest
