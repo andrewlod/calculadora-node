@@ -1,4 +1,4 @@
-public.ecr.aws/lambda/nodejs:12
+from public.ecr.aws/lambda/nodejs:12
 WORKDIR /usr/src/app/calculadora
 
 COPY . .
