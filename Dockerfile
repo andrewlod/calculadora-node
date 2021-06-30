@@ -1,4 +1,4 @@
-FROM node:13.12.0-alpine3.10
+public.ecr.aws/lambda/nodejs:12
 WORKDIR /usr/src/app/calculadora
 
 COPY . .
