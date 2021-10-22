@@ -5,14 +5,14 @@ files:
     destination: /var/consulta-ui
 hooks:
   ApplicationStart:
-    - location: /var/consulta-ui/scripts/start_server.sh
+    - location: scripts/start_server.sh
       timeout: 300
-      runas: root
+      runas: bitnami
   AfterInstall:
-    - location: /var/consulta-ui/scripts/copy_files.sh
+    - location: scripts/copy_files.sh
       timeout: 300
       runas: root
   ApplicationStop:
-    - location: /var/consulta-ui/scripts/stop_server.sh
+    - location: scripts/stop_server.sh
       timeout: 300
-      runas: root
+      runas: bitnami
