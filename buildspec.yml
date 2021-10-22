@@ -9,13 +9,12 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
       - npm i
-  post_build:
-    commands:
-      - echo Entered the post_build phase...
-      - echo Build completed on `date`
-      - mkdir build-output
-      - cp -r src/ node_modules/ appspec.yml package.json start_server.sh stop_server.sh build-output
 
 artifacts:
   files:
-    - build-output/**/*
+    - src
+    - node_modules
+    - appspec.yml
+    - package.json
+    - start_server.sh
+    - stop_server.sh
