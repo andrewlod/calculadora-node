@@ -1,18 +1,21 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - echo Entered the pre_build phase...
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 577269947961.dkr.ecr.us-east-1.amazonaws.com
+  install:
+    runtime-versions:
+      nodejs: 12
   build:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - docker build -t calculadora-node .
-      - docker tag calculadora-node:latest 577269947961.dkr.ecr.us-east-1.amazonaws.com/calculadora-node:latest
+      - npm i
   post_build:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-      - docker push 577269947961.dkr.ecr.us-east-1.amazonaws.com/calculadora-node:latest
+      - mkdir build-output
+      - cp -r src/ node_modules/ appspec.yml package.json start_server.sh stop_server.sh build-output
+
+artifacts:
+  files:
+    - build-output/**/*
