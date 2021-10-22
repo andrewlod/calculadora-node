@@ -12,9 +12,6 @@ phases:
 
 artifacts:
   files:
-    - src
-    - node_modules
     - appspec.yml
-    - package.json
-    - start_server.sh
-    - stop_server.sh
+    - scripts/*
+    - index.html
